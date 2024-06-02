@@ -16,12 +16,14 @@ async function getIPv6Address() {
         return data.ip;
     } catch (error) {
         console.error('IPアドレスを取得できませんでした', error);
+        notify("取得中にエラーが発生しました")
         null;
     }
 }
 
 async function displayIPAddresses() {
     const ipv4Address = await getIPv4Address();
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const ipv6Address = await getIPv6Address();
     const ipv4Element = document.getElementById('ipv4');
     const ipv6Element = document.getElementById('ipv6');
@@ -52,13 +54,10 @@ async function copyToClipboard(id) {
 async function notify(message) {
     const notifyContainer = document.getElementById('notify-container');
     const notifyContent = document.getElementById('notify');
-    notifyContainer.style.display = 'block';
     notifyContent.textContent = message;
-    notifyContainer.style.opacity = 1;
+    notifyContainer.classList.add('show')
     await new Promise(resolve => setTimeout(resolve, 3000));
-    notifyContainer.style.opacity = 0;
-    await new Promise(resolve => setTimeout(resolve, 500));
-    notifyContainer.style.display = 'none';
+    notifyContainer.classList.remove('show')
 }
 
 window.onload = displayIPAddresses;

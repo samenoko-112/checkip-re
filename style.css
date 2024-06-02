@@ -48,13 +48,24 @@ main {
 }
 
 .notify {
-    display: none;
+    display: block;
     opacity: 0;
     position: absolute;
-    bottom: 12px;
+    bottom: 0px;
     padding: 1em;
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #ddd;
-    transition: all .3s;
+    transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    user-select: none;
+}
+
+.show {
+    opacity: 1;
+    bottom: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
 }
