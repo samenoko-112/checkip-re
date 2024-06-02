@@ -16,7 +16,7 @@ async function getIPv6Address() {
         return data.ip;
     } catch (error) {
         console.error('IPアドレスを取得できませんでした', error);
-        notify("取得中にエラーが発生しました")
+        notify("取得中にエラーが発生しました");
         null;
     }
 }
